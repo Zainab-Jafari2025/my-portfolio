@@ -2,7 +2,7 @@ import { useState } from "react";
 import calculator from "../assets/calculator.png";
 import shopping from "../assets/shopping.png";
 import teather from "../assets/teather.png";
-import ProjectCard from "./ProjectCard";
+import ProjectCard from "./projectCard";
 
 function Projects({ theme }) {
   const projects = [
