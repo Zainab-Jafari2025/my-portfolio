@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 function Navbar({ full_name, theme }) {
   return (
     <>
@@ -9,16 +10,26 @@ function Navbar({ full_name, theme }) {
       : "bg-white border-gray-300"
   }`}
       >
-        <h2 className="text-2xl font-bold text-violet-500 ml-28">{full_name}</h2>
+        <h2 className="text-2xl font-bold text-violet-500 ml-28">
+          {full_name}
+        </h2>
         <ul
           className={`flex gap-8 ${
             theme === "dark" ? "text-white" : "text-slate-900"
           }`}
         >
-          <li>Home</li>
-          <li>About</li>
-          <li>Projects</li>
-          <li>Contact</li>
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/about">About</NavLink>
+          </li>
+          <li>
+            <NavLink to="/projects">Projects</NavLink>
+          </li>
+          <li>
+            <NavLink to="/contact">Contact</NavLink>
+          </li>
         </ul>
       </nav>
     </>
