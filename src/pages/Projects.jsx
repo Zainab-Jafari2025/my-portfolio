@@ -1,6 +1,9 @@
+import ProjectsSection from "../components/projects"; 
 function Projects(){
   return(
-    <><h1>projects page</h1></>
+    <>
+    <ProjectsSection/>
+    </>
   );
 }
 export default Projects;

@@ -34,11 +34,7 @@ function FeedbackWall() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (
-      !feedbackData.name.trim() ||
-      !feedbackData.comment.trim()
-    )
-      return;
+    if (!feedbackData.name.trim() || !feedbackData.comment.trim()) return;
 
     const newFeedback = {
       id: Date.now(),
@@ -57,21 +53,19 @@ function FeedbackWall() {
   };
 
   const sortedFeedbacks = [...feedbacks].sort((a, b) =>
-    sortOrder === "high"
-      ? b.rating - a.rating
-      : a.rating - b.rating
+    sortOrder === "high" ? b.rating - a.rating : a.rating - b.rating
   );
 
   return (
-    <section className="px-20 py-20">
-      <h2 className="text-4xl font-bold mb-10">
+    <section className="px-4 sm:px-6 md:px-10 lg:px-20 py-12 md:py-20">
+      <h2 className=" text-center px-4 sm:px-6 md:px-10 lg:px-20 py-12 md:py-20">
         Visitor Feedback
       </h2>
 
       {/* Form */}
       <form
         onSubmit={handleSubmit}
-        className="max-w-xl flex flex-col gap-5 mb-10"
+        className="max-w-xl mx-auto w-full flex flex-col gap-4 sm:gap-5 mb-8 md:mb-10"
       >
         <input
           type="text"
@@ -79,14 +73,14 @@ function FeedbackWall() {
           value={feedbackData.name}
           onChange={handleChange}
           placeholder="Your Name"
-          className="border p-3 rounded-lg"
+          className="border p-2 sm:p-3 rounded-lg text-sm sm:text-base"
         />
 
         <select
           name="rating"
           value={feedbackData.rating}
           onChange={handleChange}
-          className="border p-3 rounded-lg"
+          className="border p-2 sm:p-3 rounded-lg text-sm sm:text-base"
         >
           <option value="1">⭐ 1</option>
           <option value="2">⭐ 2</option>
@@ -101,7 +95,7 @@ function FeedbackWall() {
           value={feedbackData.comment}
           onChange={handleChange}
           placeholder="Your Comment"
-          className="border p-3 rounded-lg"
+          className="border p-2 sm:p-3 rounded-lg text-sm sm:text-base"
         />
 
         <button className="bg-violet-500 text-white p-3 rounded-lg hover:bg-violet-700 duration-300">
@@ -110,17 +104,19 @@ function FeedbackWall() {
       </form>
 
       {/* Sort */}
-      <div className="mb-8">
+      <div className="mb-6 md:mb-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
         <button
+          type="button"
           onClick={() => setSortOrder("high")}
-          className="bg-green-500 text-white px-4 py-2 rounded mr-3"
+          className="bg-green-500 text-white px-4 py-2 rounded w-full sm:w-auto hover:bg-green-600 transition"
         >
           Highest Rating
         </button>
 
         <button
+          type="button"
           onClick={() => setSortOrder("low")}
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          className="bg-blue-500 text-white px-4 py-2 rounded w-full sm:w-auto hover:bg-blue-600 transition duration-300 hover:scale-105 active:scale-95"
         >
           Lowest Rating
         </button>
@@ -129,14 +125,9 @@ function FeedbackWall() {
       {/* Feedback List */}
       <div className="space-y-5">
         {sortedFeedbacks.map((feedback) => (
-          <div
-            key={feedback.id}
-            className="p-6 border rounded-2xl shadow"
-          >
+          <div key={feedback.id} className="p-6 border rounded-2xl shadow">
             <div className="flex justify-between items-center">
-              <h3 className="font-bold text-xl">
-                {feedback.name}
-              </h3>
+              <h3 className="font-bold text-xl">{feedback.name}</h3>
 
               {feedback.rating === 5 && (
                 <span className="bg-yellow-200 px-3 py-1 rounded-full">
@@ -149,9 +140,7 @@ function FeedbackWall() {
               {"⭐".repeat(feedback.rating)}
             </div>
 
-            <p className="mt-4 text-gray-600">
-              {feedback.comment}
-            </p>
+            <p className="mt-4 text-gray-600">{feedback.comment}</p>
           </div>
         ))}
       </div>
